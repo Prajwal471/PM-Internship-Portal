@@ -146,12 +146,33 @@ export default function Test() {
     if (!testStarted) return;
 
     const setupCamera = async () => {
+      console.log('📱 Setting up camera on mobile...');
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' }, audio: false });
+        // Check if we're on mobile and HTTPS
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const isHttps = window.location.protocol === 'https:';
+        
+        console.log('📱 Mobile detected:', isMobile, 'HTTPS:', isHttps);
+        
+        if (isMobile && !isHttps) {
+          setWarnings(prev => [...prev, '📱 Camera requires HTTPS on mobile. Test will continue without face detection.']);
+          return; // Skip camera setup on mobile without HTTPS
+        }
+        
+        const stream = await navigator.mediaDevices.getUserMedia({ 
+          video: { 
+            facingMode: 'user',
+            width: { ideal: 640 },
+            height: { ideal: 480 }
+          }, 
+          audio: false 
+        });
+        
         if (videoRef.current) {
           videoRef.current.srcObject = stream;
           await new Promise(res => videoRef.current?.addEventListener('loadedmetadata', () => res(null), { once: true }));
           videoRef.current.play().catch(() => {});
+          console.log('📱 Camera setup successful');
         }
 
         // Simple face detection using browser FaceDetector if available
@@ -188,8 +209,21 @@ export default function Test() {
           setWarnings(prev => [...prev, 'Face detection not available in this browser. Keep your face visible on camera.']);
         }
       } catch (err) {
-        console.error('Camera setup failed:', err);
-        setWarnings(prev => [...prev, 'Camera access denied']);
+        console.error('📱 Camera setup failed:', err);
+        const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+        console.log('📱 Camera error details:', errorMessage);
+        
+        // More specific error handling for mobile
+        if (errorMessage.includes('Permission denied') || errorMessage.includes('NotAllowedError')) {
+          setWarnings(prev => [...prev, '📱 Camera permission denied. Test will continue without face detection.']);
+        } else if (errorMessage.includes('NotFoundError') || errorMessage.includes('DevicesNotFoundError')) {
+          setWarnings(prev => [...prev, '📱 No camera found. Test will continue without face detection.']);
+        } else {
+          setWarnings(prev => [...prev, '📱 Camera unavailable on mobile. Test will continue without face detection.']);
+        }
+        
+        // Don't block the test if camera fails - just continue without it
+        console.log('📱 Continuing test without camera...');
       }
     };
 
@@ -219,17 +253,24 @@ export default function Test() {
   }, [status, router]);
 
   const fetchQuestions = async () => {
+    console.log('📱 Fetching questions for mobile test...');
     try {
       const response = await fetch('/api/test/questions');
+      console.log('📱 Questions API response status:', response.status);
+      
       if (response.ok) {
         const data = await response.json();
+        console.log('📱 Questions received:', data.questions?.length || 0);
         setQuestions(data.questions);
       } else {
+        console.error('📱 Questions API failed:', response.status, response.statusText);
         setError(t.error);
       }
     } catch (err) {
+      console.error('📱 Questions fetch error:', err);
       setError(t.error);
     } finally {
+      console.log('📱 Questions loading finished');
       setLoading(false);
     }
   };
@@ -349,6 +390,10 @@ export default function Test() {
   }
 
   if (!testStarted) {
+    // Add mobile debugging info
+    const isMobile = typeof window !== 'undefined' && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const isHttps = typeof window !== 'undefined' && window.location.protocol === 'https:';
+    
     return (
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
         <div className="bg-white rounded-lg shadow-xl p-8 w-full max-w-2xl">
@@ -356,6 +401,11 @@ export default function Test() {
           <div className="text-center mb-8">
             <h1 className="text-3xl font-bold text-gray-900 mb-2">{t.title}</h1>
             <p className="text-gray-600">{t.subtitle}</p>
+            {isMobile && (
+              <div className="mt-2 text-sm text-blue-600">
+                📱 Mobile Mode | HTTPS: {isHttps ? '✅' : '❌'} | Questions: {questions.length}
+              </div>
+            )}
           </div>
 
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
@@ -367,18 +417,31 @@ export default function Test() {
                 <h3 className="text-sm font-medium text-yellow-800">Important Instructions</h3>
                 <div className="mt-2 text-sm text-yellow-700">
                   <p className="mb-2">{t.warning}</p>
-                  <p>{t.cameraWarning}</p>
+                  <p className="mb-2">{isMobile ? '📱 Camera is optional on mobile devices.' : t.cameraWarning}</p>
+                  {isMobile && !isHttps && (
+                    <p className="text-orange-600 font-medium">
+                      ⚠️ Camera features require HTTPS. Test will work without camera.
+                    </p>
+                  )}
                 </div>
               </div>
             </div>
           </div>
 
           <button
-            onClick={() => setTestStarted(true)}
-            className="w-full bg-indigo-600 text-white py-3 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 font-medium text-lg"
+            onClick={() => {
+              console.log('📱 Start Test button clicked on mobile');
+              console.log('📱 Questions available:', questions.length);
+              setTestStarted(true);
+            }}
+            onTouchStart={() => {
+              console.log('📱 Start Test button touched');
+            }}
+            className="w-full bg-indigo-600 text-white py-4 px-6 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 font-medium text-lg touch-manipulation select-none"
             disabled={questions.length === 0}
+            style={{ WebkitTapHighlightColor: 'transparent' }}
           >
-            Start Test (Camera required)
+            📱 Start Test {questions.length === 0 ? '(Loading...)' : '(Camera Optional)'}
           </button>
         </div>
       </div>
