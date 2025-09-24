@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '../contexts/LanguageContext';
-import Chatbot from '../components/Chatbot';
 
 interface UserData {
   name?: string;
@@ -287,7 +286,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <Chatbot />
       </div>
     );
   }
@@ -375,7 +373,6 @@ export default function Home() {
           <p>Built for the PM Internship Scheme • Empowering Indian Youth</p>
         </div>
       </div>
-      <Chatbot />
     </div>
   );
 }
