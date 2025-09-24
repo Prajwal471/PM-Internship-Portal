@@ -1,9 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import { authOptions } from '../../auth/[...nextauth]/route';
 import { connectToDatabase } from '@/lib/mongodb';
 import User from '../../../../models/User';
 import internships from '@/data/internships.json';
+
+function hasValidGeminiKey() {
+  const key = process.env.GEMINI_API_KEY || '';
+  if (!key) return false;
+  if (/your_gemini_api_key_here/i.test(key)) return false;
+  return true;
+}
 
 export async function GET(
   request: NextRequest,
@@ -109,14 +117,96 @@ export async function GET(
     const matchScore = Math.min(99, Math.max(40, breakdown.total));
     const matchReasons = breakdown.reasons.slice(0, 5); // Show up to 5 reasons on detail page
 
-    // Generate AI insight based on the actual scoring
-    const aiInsight = `Based on your profile analysis (Skills: ${breakdown.skills}/50, Sectors: ${breakdown.sectors}/15, Education: ${breakdown.education}/15, Location: ${breakdown.location}/10, Test: ${breakdown.test}/10), this ${internship.duration} ${internship.type.toLowerCase()} internship at ${internship.company} offers ${matchScore >= 80 ? 'excellent' : matchScore >= 60 ? 'good' : 'moderate'} growth opportunities for your career development.`;
+    // Try to get AI enhancement, fallback to rule-based insight
+    let aiInsight = `Based on your profile analysis (Skills: ${breakdown.skills}/50, Sectors: ${breakdown.sectors}/15, Education: ${breakdown.education}/15, Location: ${breakdown.location}/10, Test: ${breakdown.test}/10), this ${internship.duration} ${internship.type.toLowerCase()} internship at ${internship.company} offers ${matchScore >= 80 ? 'excellent' : matchScore >= 60 ? 'good' : 'moderate'} growth opportunities for your career development.`;
+    let careerGrowthPotential;
+    let skillDevelopmentOpportunities;
+
+    if (hasValidGeminiKey()) {
+      try {
+        const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
+        const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+
+        const userContext = {
+          skills: user.skills || [],
+          education: {
+            level: user.education?.level || 'Not specified',
+            field: user.education?.field || 'Not specified'
+          },
+          interestedSectors: user.interestedSectors || [],
+          location: {
+            state: user.location?.state || 'Not specified',
+            city: user.location?.city || 'Not specified'
+          },
+          skillTestScore: user.skillTestScore || 0,
+          experience: user.experience || 'Fresher',
+          careerGoals: user.careerGoals || 'Not specified'
+        };
+
+        const prompt = `
+You are an AI career advisor analyzing a specific internship opportunity for an Indian student.
+
+User Profile:
+${JSON.stringify(userContext, null, 2)}
+
+Internship Details:
+Title: ${internship.title}
+Company: ${internship.company}
+Location: ${internship.location.city}, ${internship.location.state}
+Duration: ${internship.duration}
+Stipend: ₹${internship.stipend}
+Description: ${internship.description}
+Required Skills: ${internship.requirements.skills.join(', ')}
+Education: ${internship.requirements.education.join(', ')}
+Sectors: ${internship.requirements.sectors.join(', ')}
+Rule-based Match Score: ${matchScore}%
+Rule-based Reasons: ${matchReasons.join('; ')}
+
+Provide a detailed career analysis in JSON format:
+{
+  "aiInsight": "Personalized 2-3 sentence analysis of why this internship fits the user's profile and career trajectory",
+  "careerGrowthPotential": "1-2 sentence assessment of long-term career growth from this opportunity",
+  "skillDevelopmentOpportunities": ["skill1", "skill2", "skill3", "skill4", "skill5"]
+}
+
+Focus on:
+- Specific skill matches and development opportunities
+- Industry growth trends and market demand
+- Career trajectory alignment with user's goals
+- Learning opportunities unique to this role/company
+- Practical benefits for career advancement
+
+Be honest about both opportunities and potential challenges.`;
+
+        const result = await model.generateContent(prompt);
+        const aiResponse = result.response.text();
+
+        // Parse AI response
+        try {
+          const jsonMatch = aiResponse.match(/\{[\s\S]*\}/);
+          if (jsonMatch) {
+            const aiAnalysis = JSON.parse(jsonMatch[0]);
+            if (aiAnalysis.aiInsight) aiInsight = aiAnalysis.aiInsight;
+            if (aiAnalysis.careerGrowthPotential) careerGrowthPotential = aiAnalysis.careerGrowthPotential;
+            if (aiAnalysis.skillDevelopmentOpportunities) skillDevelopmentOpportunities = aiAnalysis.skillDevelopmentOpportunities;
+          }
+        } catch (parseError) {
+          console.error('Failed to parse AI analysis:', parseError);
+          // Keep fallback values
+        }
+      } catch (aiError) {
+        console.error('AI analysis failed:', aiError);
+        // Keep fallback values
+      }
+    }
 
     return NextResponse.json({
       ...internship,
       matchScore,
       matchReasons,
       aiInsight,
+      careerGrowthPotential,
+      skillDevelopmentOpportunities,
       scoreBreakdown: {
         skills: breakdown.skills,
         sectors: breakdown.sectors,

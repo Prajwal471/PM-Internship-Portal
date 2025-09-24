@@ -134,7 +134,7 @@ export default function Profile() {
   const [state, setState] = useState<string>('');
   const [district, setDistrict] = useState<string>('');
   const [pincode, setPincode] = useState<string>('');
-  const { language, toggleLanguage } = useLanguage();
+  const { language } = useLanguage();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
@@ -256,7 +256,7 @@ export default function Profile() {
       } else {
         setError(t.error);
       }
-    } catch (err) {
+    } catch (_err) {
       setError(t.error);
     } finally {
       setLoading(false);

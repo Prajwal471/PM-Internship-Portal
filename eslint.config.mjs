@@ -17,10 +17,7 @@ const eslintConfig = [
       "@typescript-eslint/no-unused-vars": "warn",
       "react-hooks/exhaustive-deps": "warn",
     },
-  },
-];
-
-export default eslintConfig;
+    ignores: [
       ".next/**",
       "out/**",
       "build/**",

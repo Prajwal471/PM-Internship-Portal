@@ -65,7 +65,7 @@ export default function Test() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const faceCheckInterval = useRef<NodeJS.Timeout | null>(null);
-  const tabWarningTimeout = useRef<NodeJS.Timeout | null>(null);
+  const _tabWarningTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const t = translations[language];
 
@@ -198,7 +198,7 @@ export default function Test() {
                     setWarnings(prev => [...prev, t.multiplePersons]);
                     autoSubmitTest('multiple_faces');
                   }
-                } catch (err) {
+                } catch (_err) {
                   // Face detection failed, continue silently
                 }
               }

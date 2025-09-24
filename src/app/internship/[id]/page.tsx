@@ -19,6 +19,8 @@ interface Internship {
   matchScore?: number;
   matchReasons?: string[];
   aiInsight?: string;
+  careerGrowthPotential?: string;
+  skillDevelopmentOpportunities?: string[];
   scoreBreakdown?: {
     skills: number;
     sectors: number;
@@ -31,7 +33,7 @@ interface Internship {
 
 export default function InternshipDetail({ params }: { params: Promise<{ id: string }> }) {
   const [id, setId] = useState<string>('');
-  const router = useRouter();
+  const _router = useRouter();
   const [data, setData] = useState<Internship | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -56,7 +58,7 @@ export default function InternshipDetail({ params }: { params: Promise<{ id: str
           const json = await res.json();
           setData(json);
         }
-      } catch (e) {
+      } catch (_e) {
         setError('Failed to load internship');
       } finally {
         setLoading(false);
@@ -155,12 +157,43 @@ export default function InternshipDetail({ params }: { params: Promise<{ id: str
         {/* AI Insight */}
         {data.aiInsight && (
           <div className="mb-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">AI Insight</h2>
+            <h2 className="text-xl font-semibold text-gray-900 mb-2">🤖 AI Career Analysis</h2>
             <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
               <p className="text-gray-700">
                 <span className="mr-2">💡</span>
                 {data.aiInsight}
               </p>
+            </div>
+          </div>
+        )}
+
+        {/* Career Growth & Skills Development */}
+        {(data.careerGrowthPotential || (data.skillDevelopmentOpportunities && data.skillDevelopmentOpportunities.length > 0)) && (
+          <div className="mb-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">📈 Career Development</h2>
+            <div className="grid md:grid-cols-2 gap-6">
+              {data.careerGrowthPotential && (
+                <div>
+                  <h3 className="text-lg font-medium text-gray-800 mb-2">Growth Potential</h3>
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <p className="text-green-800">{data.careerGrowthPotential}</p>
+                  </div>
+                </div>
+              )}
+              {data.skillDevelopmentOpportunities && data.skillDevelopmentOpportunities.length > 0 && (
+                <div>
+                  <h3 className="text-lg font-medium text-gray-800 mb-2">Skills You&apos;ll Develop</h3>
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <div className="flex flex-wrap gap-2">
+                      {data.skillDevelopmentOpportunities.map((skill, index) => (
+                        <span key={index} className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         )}

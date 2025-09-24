@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useLanguage } from '../../contexts/LanguageContext';
 
 export default function EligibilityPage() {
-  const { language, toggleLanguage } = useLanguage();
+  const { language } = useLanguage();
 
   const content = {
     en: {
@@ -105,11 +105,11 @@ export default function EligibilityPage() {
             </div>
             <div className="grid md:grid-cols-2 gap-4">
               <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
-                <p className="text-green-800 font-medium">✓ Graduate (Bachelor's Degree)</p>
+                <p className="text-green-800 font-medium">✓ Graduate (Bachelor&apos;s Degree)</p>
                 <p className="text-green-700 text-sm">Any stream/discipline</p>
               </div>
               <div className="bg-green-50 border border-green-200 p-4 rounded-lg">
-                <p className="text-green-800 font-medium">✓ Post Graduate (Master's Degree)</p>
+                <p className="text-green-800 font-medium">✓ Post Graduate (Master&apos;s Degree)</p>
                 <p className="text-green-700 text-sm">Any stream/discipline</p>
               </div>
               <div className="bg-green-50 border border-green-200 p-4 rounded-lg">

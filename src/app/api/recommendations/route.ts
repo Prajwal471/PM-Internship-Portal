@@ -12,7 +12,130 @@ function hasValidGeminiKey() {
   return true;
 }
 
-export async function GET(request: NextRequest) {
+// AI-enhanced recommendation function
+async function getAIEnhancedRecommendations(user: any, ruleBasedRecommendations: any[]) {
+  const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY as string);
+  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+
+  // Prepare user context
+  const userContext = {
+    skills: user.skills || [],
+    education: {
+      level: user.education?.level || 'Not specified',
+      field: user.education?.field || 'Not specified',
+      institution: user.education?.institution || 'Not specified'
+    },
+    interestedSectors: user.interestedSectors || [],
+    location: {
+      state: user.location?.state || 'Not specified',
+      city: user.location?.city || 'Not specified'
+    },
+    skillTestScore: user.skillTestScore || 0,
+    experience: user.experience || 'Fresher',
+    careerGoals: user.careerGoals || 'Not specified'
+  };
+
+  // Create a concise version of internships for AI analysis
+  const internshipSummaries = ruleBasedRecommendations.map((rec, index) => ({
+    id: index,
+    title: rec.title,
+    company: rec.company,
+    location: rec.location,
+    duration: rec.duration,
+    stipend: rec.stipend,
+    requirements: rec.requirements,
+    description: rec.description?.substring(0, 200) + '...',
+    ruleBasedScore: rec.matchScore,
+    ruleBasedReasons: rec.matchReasons
+  }));
+
+  const prompt = `
+You are an AI career advisor analyzing internship recommendations for an Indian student.
+
+User Profile:
+${JSON.stringify(userContext, null, 2)}
+
+Rule-based Recommendations (with scores):
+${JSON.stringify(internshipSummaries, null, 2)}
+
+Your task:
+1. Re-rank these internships based on deeper analysis of user fit
+2. Provide personalized insights for each recommendation
+3. Consider factors like career growth potential, skill development, company culture fit
+4. Adjust match scores if needed (40-99 range)
+5. Give specific, actionable reasons why each internship is recommended
+
+Return ONLY a JSON array with this exact structure:
+[
+  {
+    "id": 0,
+    "adjustedMatchScore": 85,
+    "aiInsight": "This role perfectly aligns with your JavaScript skills and offers excellent growth in fintech, which matches your career goals.",
+    "personalizedReasons": [
+      "Direct match with your JavaScript and React skills",
+      "Fintech aligns with your interest in finance sector",
+      "Good stepping stone for your career goals"
+    ],
+    "careerGrowthPotential": "High - emerging fintech sector with learning opportunities",
+    "skillDevelopmentOpportunities": ["Advanced React", "Financial APIs", "Team collaboration"]
+  }
+]
+
+Focus on:
+- Genuine career fit and growth potential
+- Specific skill matches and development opportunities  
+- Industry trends and market demands
+- Personal career trajectory alignment
+- Practical considerations (location, stipend, duration)
+
+Be honest about both strengths and potential challenges of each opportunity.`;
+
+  const result = await model.generateContent(prompt);
+  const aiResponse = result.response.text();
+
+  // Parse AI response
+  let aiEnhancements;
+  try {
+    const jsonMatch = aiResponse.match(/\[[\s\S]*\]/);
+    if (jsonMatch) {
+      aiEnhancements = JSON.parse(jsonMatch[0]);
+    } else {
+      throw new Error('No valid JSON found in AI response');
+    }
+  } catch (parseError) {
+    console.error('Failed to parse AI enhancements:', parseError);
+    throw parseError;
+  }
+
+  // Merge AI insights with original recommendations
+  const enhancedRecommendations = ruleBasedRecommendations.map((rec, index) => {
+    const aiEnhancement = aiEnhancements.find((ai: any) => ai.id === index);
+    
+    if (aiEnhancement) {
+      return {
+        ...rec,
+        matchScore: aiEnhancement.adjustedMatchScore || rec.matchScore,
+        aiInsight: aiEnhancement.aiInsight,
+        matchReasons: aiEnhancement.personalizedReasons || rec.matchReasons,
+        careerGrowthPotential: aiEnhancement.careerGrowthPotential,
+        skillDevelopmentOpportunities: aiEnhancement.skillDevelopmentOpportunities
+      };
+    }
+    
+    return {
+      ...rec,
+      aiInsight: 'AI analysis unavailable for this recommendation.',
+      careerGrowthPotential: 'To be evaluated',
+      skillDevelopmentOpportunities: ['General skill development']
+    };
+  });
+
+  // Re-sort by AI-adjusted scores
+  return enhancedRecommendations.sort((a, b) => b.matchScore - a.matchScore);
+}
+
+
+export async function GET(_request: NextRequest) {
   try {
     const session = await getServerSession();
     
@@ -130,8 +253,25 @@ export async function GET(request: NextRequest) {
       aiInsight: 'Rule-based match using your skills, sectors, education, location, test score, and recency.'
     }));
 
-    // Always return rule-based model (ML-light). Gemini can be layered later for explanations.
-    return NextResponse.json({ recommendations });
+    // Try Gemini AI for enhanced recommendations, fallback to rule-based
+    if (hasValidGeminiKey()) {
+      try {
+        const aiRecommendations = await getAIEnhancedRecommendations(user, recommendations);
+        return NextResponse.json({ 
+          recommendations: aiRecommendations,
+          source: 'ai-enhanced' 
+        });
+      } catch (aiError) {
+        console.error('AI enhancement failed, using rule-based:', aiError);
+        // Continue to rule-based fallback below
+      }
+    }
+    
+    // Fallback to rule-based recommendations
+    return NextResponse.json({ 
+      recommendations,
+      source: 'rule-based' 
+    });
 
   } catch (error) {
     console.error('Recommendations error:', error);

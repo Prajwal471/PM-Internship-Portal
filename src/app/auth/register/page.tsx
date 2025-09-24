@@ -122,7 +122,7 @@ function RegisterPage() {
         const data = await response.json();
         setError(data.error || t.error);
       }
-    } catch (err) {
+    } catch (_err) {
       setError(t.error);
     } finally {
       setLoading(false);

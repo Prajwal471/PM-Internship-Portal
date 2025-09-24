@@ -54,7 +54,7 @@ function SignInPage() {
       } else {
         router.push('/');
       }
-    } catch (err) {
+    } catch (_err) {
       setError(t.error);
     } finally {
       setLoading(false);

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useSession, signOut } from 'next-auth/react';
+import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useLanguage } from '../../contexts/LanguageContext';
@@ -28,7 +28,9 @@ interface Recommendation {
   posted: string;
   matchScore: number;
   matchReasons: string[];
-  aiInsight: string;
+  aiInsight?: string;
+  careerGrowthPotential?: string;
+  skillDevelopmentOpportunities?: string[];
 }
 
 const translations = {
@@ -120,8 +122,8 @@ export default function Dashboard() {
         const userData = await response.json();
         setUser(userData);
       }
-    } catch (err) {
-      console.error('Failed to fetch user data:', err);
+    } catch (_err) {
+      console.error('Failed to fetch user data:', _err);
     }
   };
 
@@ -137,37 +139,17 @@ export default function Dashboard() {
         const errorData = await response.json();
         setError(errorData.error || t.error);
       }
-    } catch (err) {
+    } catch (_err) {
       setError(t.error);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleLogout = async () => {
-    await signOut({ redirect: false });
-    router.push('/');
-  };
-
   const getMatchScoreColor = (score: number) => {
     if (score >= 80) return 'text-green-600 bg-green-50';
     if (score >= 60) return 'text-yellow-600 bg-yellow-50';
     return 'text-red-600 bg-red-50';
-  };
-
-  const getTypeIcon = (type: string) => {
-    if (type.includes('Remote')) {
-      return (
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      );
-    }
-    return (
-      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    );
   };
 
   if (status === 'loading' || loading) {
@@ -208,9 +190,9 @@ export default function Dashboard() {
                 <div>
                   <p className="text-sm text-yellow-800 font-medium">Your recent test score seems lower than expected.</p>
                   <p className="text-sm text-yellow-700 mt-1">If this doesn’t reflect your true skills, we recommend revising the topics and taking a retest.</p>
-                  <div className="mt-3 space-x-3">
-                    <button onClick={() => router.push('/test')} className="px-3 py-1.5 text-sm bg-yellow-600 text-white rounded-md hover:bg-yellow-700">Retake Skill Test</button>
-                    <button onClick={() => setShowPrepTips(true)} className="text-sm text-yellow-700 underline hover:text-yellow-800">Preparation tips</button>
+                  <div className="mt-3 flex flex-col sm:flex-row gap-2 sm:gap-3">
+                    <button onClick={() => router.push('/test')} className="px-3 py-1.5 text-sm bg-yellow-600 text-white rounded-md hover:bg-yellow-700 w-full sm:w-auto">Retake Skill Test</button>
+                    <button onClick={() => setShowPrepTips(true)} className="text-sm text-yellow-700 underline hover:text-yellow-800 py-1.5 sm:py-0">Preparation tips</button>
                   </div>
                 </div>
               </div>
@@ -221,11 +203,11 @@ export default function Dashboard() {
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-8 text-center">
             <p className="text-red-700 mb-4">{error}</p>
-            <div className="space-x-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:justify-center">
               {!user?.profileCompleted && (
                 <button
                   onClick={() => router.push('/profile')}
-                  className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700"
+                  className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 w-full sm:w-auto"
                 >
                   {t.completeProfile}
                 </button>
@@ -233,14 +215,14 @@ export default function Dashboard() {
               {!user?.skillTestCompleted && (
                 <button
                   onClick={() => router.push('/test')}
-                  className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
+                  className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 w-full sm:w-auto"
                 >
                   {t.takeTest}
                 </button>
               )}
               <button
                 onClick={fetchRecommendations}
-                className="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700"
+                className="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 w-full sm:w-auto"
               >
                 {t.retry}
               </button>
@@ -251,11 +233,11 @@ export default function Dashboard() {
         {recommendations.length === 0 && !error && !loading && (
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
             <p className="text-yellow-700 mb-4">{t.noRecommendations}</p>
-            <div className="space-x-4">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:justify-center">
               {!user?.profileCompleted && (
                 <button
                   onClick={() => router.push('/profile')}
-                  className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700"
+                  className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 w-full sm:w-auto"
                 >
                   {t.completeProfile}
                 </button>
@@ -263,7 +245,7 @@ export default function Dashboard() {
               {!user?.skillTestCompleted && (
                 <button
                   onClick={() => router.push('/test')}
-                  className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700"
+                  className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 w-full sm:w-auto"
                 >
                   {t.takeTest}
                 </button>
@@ -315,11 +297,14 @@ export default function Dashboard() {
                     </div>
                   </div>
 
+                  
                   {/* Brief description */}
                   <p className="text-gray-700 text-sm mb-3 line-clamp-2">{rec.description}</p>
 
-                  {/* Top skills only */}
+                  
+                  {/* Top skills required */}
                   <div className="mb-4">
+                    <p className="text-xs text-gray-600 font-medium mb-1">✨ Required Skills:</p>
                     <div className="flex flex-wrap gap-1">
                       {rec.requirements.skills.slice(0, 3).map((skill, index) => (
                         <span key={index} className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
