@@ -199,10 +199,32 @@ export default function Chatbot() {
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
       sendMessage();
     }
   };
+
+  // Global keyboard shortcut for desktop (Ctrl/Cmd + K)
+  useEffect(() => {
+    const handleGlobalKeyPress = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsOpen(prev => !prev);
+        // Focus input when opening
+        if (!isOpen && inputRef.current) {
+          setTimeout(() => inputRef.current?.focus(), 100);
+        }
+      }
+      // ESC to close chat
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleGlobalKeyPress);
+    return () => document.removeEventListener('keydown', handleGlobalKeyPress);
+  }, [isOpen]);
 
   const handleQuickQuestion = (question: string) => {
     sendMessage(question);
@@ -230,14 +252,17 @@ export default function Chatbot() {
           
           {/* Tooltip */}
           <div className="absolute bottom-16 right-0 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-            {language === 'en' ? 'Need help?' : 'मदद चाहिए?'}
+            <div>{language === 'en' ? 'Need help?' : 'मदद चाहिए?'}</div>
+            <div className="text-xs text-gray-300 mt-1 hidden sm:block">
+              {language === 'en' ? 'Press Ctrl+K' : 'Ctrl+K दबाएं'}
+            </div>
           </div>
         </button>
       )}
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="fixed bottom-6 right-6 w-80 h-96 bg-white rounded-lg shadow-2xl z-50 flex flex-col border border-gray-200">
+        <div className="fixed bottom-6 right-6 w-80 sm:w-96 h-96 sm:h-[500px] bg-white rounded-lg shadow-2xl z-50 flex flex-col border border-gray-200">
           {/* Header */}
           <div className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white p-4 rounded-t-lg flex items-center justify-between">
             <div className="flex items-center space-x-2">
@@ -272,7 +297,7 @@ export default function Chatbot() {
                 className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
               >
                 <div
-                  className={`max-w-xs px-3 py-2 rounded-lg text-sm ${
+                  className={`max-w-xs sm:max-w-sm px-3 py-2 rounded-lg text-sm ${
                     message.type === 'user'
                       ? 'bg-indigo-600 text-white rounded-br-none'
                       : 'bg-gray-100 text-gray-800 rounded-bl-none'
@@ -334,13 +359,13 @@ export default function Chatbot() {
                 onChange={(e) => setInputText(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder={t.placeholder}
-                className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
+                className="flex-1 border border-gray-300 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light] transition-all duration-200"
                 disabled={isTyping}
               />
               <button
                 onClick={() => sendMessage()}
                 disabled={!inputText.trim() || isTyping}
-                className="bg-indigo-600 text-white p-2 rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="bg-indigo-600 text-white p-2 sm:p-3 rounded-lg hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
