@@ -203,7 +203,7 @@ export default function Dashboard() {
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-8 text-center">
             <p className="text-red-700 mb-4">{error}</p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 sm:justify-center">
+            <div className="space-y-3 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row sm:justify-center">
               {!user?.profileCompleted && (
                 <button
                   onClick={() => router.push('/profile')}
@@ -233,7 +233,7 @@ export default function Dashboard() {
         {recommendations.length === 0 && !error && !loading && (
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
             <p className="text-yellow-700 mb-4">{t.noRecommendations}</p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 sm:justify-center">
+            <div className="space-y-3 sm:space-y-0 sm:space-x-4 flex flex-col sm:flex-row sm:justify-center">
               {!user?.profileCompleted && (
                 <button
                   onClick={() => router.push('/profile')}
