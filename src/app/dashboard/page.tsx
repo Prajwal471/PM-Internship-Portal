@@ -203,11 +203,11 @@ export default function Dashboard() {
         {error && (
           <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-8 text-center">
             <p className="text-red-700 mb-4">{error}</p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:justify-center">
+            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 sm:justify-center">
               {!user?.profileCompleted && (
                 <button
                   onClick={() => router.push('/profile')}
-                  className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 w-full sm:w-auto"
+                  className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 text-sm font-medium w-full sm:w-auto"
                 >
                   {t.completeProfile}
                 </button>
@@ -215,14 +215,14 @@ export default function Dashboard() {
               {!user?.skillTestCompleted && (
                 <button
                   onClick={() => router.push('/test')}
-                  className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 w-full sm:w-auto"
+                  className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 text-sm font-medium w-full sm:w-auto"
                 >
                   {t.takeTest}
                 </button>
               )}
               <button
                 onClick={fetchRecommendations}
-                className="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 w-full sm:w-auto"
+                className="bg-gray-600 text-white px-4 py-2 rounded-md hover:bg-gray-700 text-sm font-medium w-full sm:w-auto"
               >
                 {t.retry}
               </button>
@@ -233,11 +233,11 @@ export default function Dashboard() {
         {recommendations.length === 0 && !error && !loading && (
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
             <p className="text-yellow-700 mb-4">{t.noRecommendations}</p>
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 sm:justify-center">
+            <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 sm:justify-center">
               {!user?.profileCompleted && (
                 <button
                   onClick={() => router.push('/profile')}
-                  className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 w-full sm:w-auto"
+                  className="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-700 text-sm font-medium w-full sm:w-auto"
                 >
                   {t.completeProfile}
                 </button>
@@ -245,7 +245,7 @@ export default function Dashboard() {
               {!user?.skillTestCompleted && (
                 <button
                   onClick={() => router.push('/test')}
-                  className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 w-full sm:w-auto"
+                  className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 text-sm font-medium w-full sm:w-auto"
                 >
                   {t.takeTest}
                 </button>
