@@ -192,7 +192,7 @@ function RegisterPage() {
                 value={formData.name}
                 onChange={(e) => updateFormData('name', e.target.value)}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               />
             </div>
 
@@ -206,7 +206,7 @@ function RegisterPage() {
                 max="35"
                 value={formData.age}
                 onChange={(e) => updateFormData('age', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               />
             </div>
 
@@ -219,7 +219,7 @@ function RegisterPage() {
                 value={formData.email}
                 onChange={(e) => updateFormData('email', e.target.value)}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               />
             </div>
 
@@ -233,7 +233,7 @@ function RegisterPage() {
                 onChange={(e) => updateFormData('password', e.target.value)}
                 required
                 minLength={6}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               />
             </div>
 
@@ -245,7 +245,7 @@ function RegisterPage() {
                 value={formData.education.level}
                 onChange={(e) => updateFormData('education.level', e.target.value)}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               >
                 <option value="">Select education level</option>
                 {educationLevels.map(level => (
@@ -264,7 +264,7 @@ function RegisterPage() {
                 type="text"
                 value={formData.education.field}
                 onChange={(e) => updateFormData('education.field', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               />
             </div>
 
@@ -276,7 +276,7 @@ function RegisterPage() {
                 value={formData.location.state}
                 onChange={(e) => updateFormData('location.state', e.target.value)}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               >
                 <option value="">Select state</option>
                 {indianStates.map(state => (
@@ -293,7 +293,7 @@ function RegisterPage() {
                 type="text"
                 value={formData.location.district}
                 onChange={(e) => updateFormData('location.district', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               />
             </div>
           </div>

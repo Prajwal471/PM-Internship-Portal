@@ -500,7 +500,7 @@ export default function Test() {
                   className={`w-full p-4 text-left border rounded-lg transition-colors ${
                     answers[currentQuestion] === index
                       ? 'border-indigo-500 bg-indigo-50 text-indigo-900'
-                      : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-900'
+                      : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-gray-900 [-webkit-text-fill-color:theme(colors.gray.900)]'
                   }`}
                 >
                   <span className="font-medium">{String.fromCharCode(65 + index)}.</span> {option}
