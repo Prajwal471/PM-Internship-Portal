@@ -1,0 +1,352 @@
+[
+  {
+    "id": "1",
+    "title": "Digital Marketing Intern",
+    "company": "TechCorp India",
+    "location": {
+      "state": "Maharashtra",
+      "district": "Mumbai",
+      "city": "Mumbai"
+    },
+    "duration": "3 months",
+    "stipend": 15000,
+    "description": "Work on social media campaigns, content creation, and digital marketing strategies for technology products.",
+    "requirements": {
+      "skills": ["Social Media", "Marketing", "Communication", "Writing"],
+      "education": ["12th", "bachelors"],
+      "sectors": ["Technology", "Marketing"]
+    },
+    "benefits": [
+      "Certificate of completion",
+      "Mentorship from industry experts",
+      "Potential full-time opportunity"
+    ],
+    "type": "Remote/Hybrid",
+    "posted": "2024-01-15"
+  },
+  {
+    "id": "2",
+    "title": "Data Entry Specialist Intern",
+    "company": "Administrative Services Ltd",
+    "location": {
+      "state": "Uttar Pradesh",
+      "district": "Lucknow",
+      "city": "Lucknow"
+    },
+    "duration": "2 months",
+    "stipend": 8000,
+    "description": "Support data management operations, maintain databases, and ensure data accuracy for government projects.",
+    "requirements": {
+      "skills": ["Data Entry", "Microsoft Office", "Time Management", "Attention to Detail"],
+      "education": ["high-school", "12th", "diploma"],
+      "sectors": ["Government", "Administration"]
+    },
+    "benefits": [
+      "Government project experience",
+      "Skills development in MS Office",
+      "References for future opportunities"
+    ],
+    "type": "Office-based",
+    "posted": "2024-01-10"
+  },
+  {
+    "id": "3",
+    "title": "Customer Support Intern",
+    "company": "E-Commerce Solutions",
+    "location": {
+      "state": "Karnataka",
+      "district": "Bangalore",
+      "city": "Bangalore"
+    },
+    "duration": "4 months",
+    "stipend": 12000,
+    "description": "Handle customer inquiries, resolve complaints, and support the customer service team in a fast-paced e-commerce environment.",
+    "requirements": {
+      "skills": ["Customer Service", "Communication", "Problem Solving", "Teamwork"],
+      "education": ["12th", "bachelors", "diploma"],
+      "sectors": ["Retail", "Technology"]
+    },
+    "benefits": [
+      "Communication skills training",
+      "Customer service certification",
+      "Performance-based incentives"
+    ],
+    "type": "Office-based",
+    "posted": "2024-01-12"
+  },
+  {
+    "id": "4",
+    "title": "Web Development Intern",
+    "company": "StartupTech India",
+    "location": {
+      "state": "Tamil Nadu",
+      "district": "Chennai",
+      "city": "Chennai"
+    },
+    "duration": "6 months",
+    "stipend": 20000,
+    "description": "Assist in developing web applications, learn modern frameworks, and contribute to real projects in a startup environment.",
+    "requirements": {
+      "skills": ["Programming", "Web Development", "Problem Solving", "Teamwork"],
+      "education": ["12th", "bachelors", "diploma"],
+      "sectors": ["Technology"]
+    },
+    "benefits": [
+      "Hands-on coding experience",
+      "Mentorship from senior developers",
+      "Potential equity and full-time offer"
+    ],
+    "type": "Office-based",
+    "posted": "2024-01-08"
+  },
+  {
+    "id": "5",
+    "title": "Content Writing Intern",
+    "company": "Media House Delhi",
+    "location": {
+      "state": "Delhi",
+      "district": "New Delhi",
+      "city": "New Delhi"
+    },
+    "duration": "3 months",
+    "stipend": 10000,
+    "description": "Create engaging content for blogs, social media, and marketing materials. Learn about content strategy and digital publishing.",
+    "requirements": {
+      "skills": ["Writing", "Communication", "Research", "Social Media"],
+      "education": ["12th", "bachelors"],
+      "sectors": ["Media & Entertainment", "Marketing"]
+    },
+    "benefits": [
+      "Published work portfolio",
+      "Writing workshops",
+      "Industry networking opportunities"
+    ],
+    "type": "Remote",
+    "posted": "2024-01-14"
+  },
+  {
+    "id": "6",
+    "title": "Financial Analysis Intern",
+    "company": "Banking Solutions Corp",
+    "location": {
+      "state": "Gujarat",
+      "district": "Ahmedabad",
+      "city": "Ahmedabad"
+    },
+    "duration": "4 months",
+    "stipend": 18000,
+    "description": "Support financial planning, data analysis, and report preparation for banking and financial services clients.",
+    "requirements": {
+      "skills": ["Financial Analysis", "Data Analysis", "Microsoft Office", "Problem Solving"],
+      "education": ["bachelors", "masters"],
+      "sectors": ["Finance", "Banking"]
+    },
+    "benefits": [
+      "Financial modeling training",
+      "Banking industry exposure",
+      "Professional certification support"
+    ],
+    "type": "Office-based",
+    "posted": "2024-01-11"
+  },
+  {
+    "id": "7",
+    "title": "Graphic Design Intern",
+    "company": "Creative Studio Mumbai",
+    "location": {
+      "state": "Maharashtra",
+      "district": "Mumbai",
+      "city": "Mumbai"
+    },
+    "duration": "3 months",
+    "stipend": 14000,
+    "description": "Create visual designs for marketing campaigns, social media, and client projects. Learn industry-standard design tools.",
+    "requirements": {
+      "skills": ["Graphic Design", "Social Media", "Communication", "Creativity"],
+      "education": ["12th", "bachelors", "diploma"],
+      "sectors": ["Media & Entertainment", "Marketing"]
+    },
+    "benefits": [
+      "Design portfolio development",
+      "Software training (Adobe Suite)",
+      "Client project experience"
+    ],
+    "type": "Office-based",
+    "posted": "2024-01-13"
+  },
+  {
+    "id": "8",
+    "title": "Sales Support Intern",
+    "company": "Manufacturing Industries Ltd",
+    "location": {
+      "state": "Haryana",
+      "district": "Gurgaon",
+      "city": "Gurgaon"
+    },
+    "duration": "3 months",
+    "stipend": 11000,
+    "description": "Support sales team with lead generation, customer follow-ups, and sales documentation for manufacturing products.",
+    "requirements": {
+      "skills": ["Sales", "Communication", "Customer Service", "Time Management"],
+      "education": ["12th", "bachelors", "diploma"],
+      "sectors": ["Manufacturing", "Sales"]
+    },
+    "benefits": [
+      "Sales training program",
+      "Industry exposure",
+      "Commission on successful deals"
+    ],
+    "type": "Office-based",
+    "posted": "2024-01-09"
+  },
+  {
+    "id": "9",
+    "title": "Healthcare Administration Intern",
+    "company": "Medical Services Group",
+    "location": {
+      "state": "West Bengal",
+      "district": "Kolkata",
+      "city": "Kolkata"
+    },
+    "duration": "4 months",
+    "stipend": 13000,
+    "description": "Assist in hospital administration, patient coordination, and healthcare data management systems.",
+    "requirements": {
+      "skills": ["Data Entry", "Customer Service", "Time Management", "Communication"],
+      "education": ["12th", "bachelors", "diploma"],
+      "sectors": ["Healthcare", "Administration"]
+    },
+    "benefits": [
+      "Healthcare industry knowledge",
+      "Patient care training",
+      "Medical administration certification"
+    ],
+    "type": "Office-based",
+    "posted": "2024-01-07"
+  },
+  {
+    "id": "10",
+    "title": "Project Management Intern",
+    "company": "Construction Corp India",
+    "location": {
+      "state": "Rajasthan",
+      "district": "Jaipur",
+      "city": "Jaipur"
+    },
+    "duration": "5 months",
+    "stipend": 16000,
+    "description": "Support project managers in planning, coordinating, and monitoring construction projects across Rajasthan.",
+    "requirements": {
+      "skills": ["Project Management", "Leadership", "Communication", "Problem Solving"],
+      "education": ["bachelors", "diploma"],
+      "sectors": ["Construction", "Engineering"]
+    },
+    "benefits": [
+      "Project management certification",
+      "Construction industry exposure",
+      "Site visit opportunities"
+    ],
+    "type": "Office-based",
+    "posted": "2024-01-06"
+  },
+  {
+    "id": "11",
+    "title": "Python Developer Intern",
+    "company": "AI Innovations Labs",
+    "location": {
+      "state": "Karnataka",
+      "district": "Bangalore",
+      "city": "Bangalore"
+    },
+    "duration": "4 months",
+    "stipend": 25000,
+    "description": "Work on machine learning projects using Python. Develop web applications with Django/Flask and contribute to data science initiatives.",
+    "requirements": {
+      "skills": ["Python", "Programming", "Data Analysis", "Problem Solving"],
+      "education": ["pursuing-bachelors", "bachelors", "12th"],
+      "sectors": ["Technology", "Research & Development"]
+    },
+    "benefits": [
+      "Python certification",
+      "Machine learning training",
+      "Real project experience"
+    ],
+    "type": "Hybrid",
+    "posted": "2024-01-16"
+  },
+  {
+    "id": "12",
+    "title": "Frontend Developer Intern",
+    "company": "Digital Solutions Pvt Ltd",
+    "location": {
+      "state": "Maharashtra",
+      "district": "Pune",
+      "city": "Pune"
+    },
+    "duration": "3 months",
+    "stipend": 18000,
+    "description": "Build responsive web interfaces using React, HTML/CSS, and JavaScript. Work with UI/UX designers to create modern web applications.",
+    "requirements": {
+      "skills": ["JavaScript", "React", "HTML/CSS", "Web Development"],
+      "education": ["pursuing-bachelors", "bachelors", "diploma"],
+      "sectors": ["Technology"]
+    },
+    "benefits": [
+      "Frontend development portfolio",
+      "React.js certification",
+      "Industry mentorship"
+    ],
+    "type": "Office-based",
+    "posted": "2024-01-17"
+  },
+  {
+    "id": "13",
+    "title": "Research Assistant Intern",
+    "company": "Indian Institute of Technology",
+    "location": {
+      "state": "Tamil Nadu",
+      "district": "Chennai",
+      "city": "Chennai"
+    },
+    "duration": "6 months",
+    "stipend": 22000,
+    "description": "Assist professors in research projects related to computer science and artificial intelligence. Conduct literature reviews and data analysis.",
+    "requirements": {
+      "skills": ["Research", "Data Analysis", "Python", "Writing"],
+      "education": ["pursuing-bachelors", "bachelors", "masters"],
+      "sectors": ["Research & Development", "Education"]
+    },
+    "benefits": [
+      "Research publication opportunity",
+      "Academic mentorship",
+      "PhD pathway guidance"
+    ],
+    "type": "Office-based",
+    "posted": "2024-01-18"
+  },
+  {
+    "id": "14",
+    "title": "Full Stack Developer Intern",
+    "company": "Tech Startup Hub",
+    "location": {
+      "state": "Haryana",
+      "district": "Gurgaon",
+      "city": "Gurgaon"
+    },
+    "duration": "5 months",
+    "stipend": 30000,
+    "description": "Work on both frontend and backend development using JavaScript, Node.js, and MongoDB. Build complete web applications from scratch.",
+    "requirements": {
+      "skills": ["JavaScript", "Node.js", "MongoDB", "React", "Web Development"],
+      "education": ["pursuing-bachelors", "bachelors"],
+      "sectors": ["Technology"]
+    },
+    "benefits": [
+      "Full stack development experience",
+      "Startup environment exposure",
+      "Potential job offer"
+    ],
+    "type": "Hybrid",
+    "posted": "2024-01-19"
+  }
+]
