@@ -23,7 +23,7 @@ An AI-assisted internship recommendation prototype for the PM Internship Scheme.
 1. Install dependencies
    - npm install
 2. Create `.env.local`
-   - MONGODB_URI=mongodb://localhost:27017/pm-internship
+   - MONGODB_URI=your_MongoDB_Url
    - GEMINI_API_KEY=your_gemini_api_key_here (optional)
    - NEXTAUTH_SECRET=your_nextauth_secret_here
    - NEXTAUTH_URL=http://localhost:3000
