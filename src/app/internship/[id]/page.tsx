@@ -69,7 +69,7 @@ export default function InternshipDetail({ params }: { params: Promise<{ id: str
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 flex items-center justify-center">
         <div className="animate-pulse">Loading...</div>
       </div>
     );
@@ -87,7 +87,7 @@ export default function InternshipDetail({ params }: { params: Promise<{ id: str
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 p-4">
       <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl p-8">
         <div className="flex justify-between items-start mb-6">
           <div>
@@ -107,7 +107,7 @@ export default function InternshipDetail({ params }: { params: Promise<{ id: str
             )}
           </div>
           <div className="text-right">
-            <div className="text-2xl font-bold text-indigo-600">₹{data.stipend.toLocaleString()}</div>
+            <div className="text-2xl font-bold text-orange-600">₹{data.stipend.toLocaleString()}</div>
             <div className="text-sm text-gray-500">per month</div>
           </div>
         </div>
@@ -237,8 +237,8 @@ export default function InternshipDetail({ params }: { params: Promise<{ id: str
         </div>
 
         <div className="flex justify-between items-center">
-          <Link href="/dashboard" className="text-indigo-600 hover:text-indigo-800 font-medium">← Back to Dashboard</Link>
-          <button className="bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700">Apply Now</button>
+          <Link href="/dashboard" className="text-orange-600 hover:text-orange-800 font-medium">← Back to Dashboard</Link>
+          <button className="bg-orange-600 text-white px-6 py-2 rounded-md hover:bg-orange-700">Apply Now</button>
         </div>
       </div>
     </div>

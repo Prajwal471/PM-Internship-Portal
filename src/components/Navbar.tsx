@@ -92,18 +92,18 @@ export default function Navbar() {
   const isActive = (path: string) => pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg border-b border-gray-200">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white shadow-lg border-b border-orange-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+            <div className="w-10 h-10 bg-gradient-to-r from-orange-600 to-blue-700 rounded-full flex items-center justify-center shadow-lg">
               <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6" />
               </svg>
             </div>
             <div>
-              <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              <h1 className="text-xl font-bold bg-gradient-to-r from-orange-600 to-blue-700 bg-clip-text text-transparent">
                 PM Internship
               </h1>
               <p className="text-xs text-gray-500 -mt-1">Portal</p>
@@ -118,7 +118,7 @@ export default function Navbar() {
                 href={link.href}
                 className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
                   isActive(link.href)
-                    ? 'bg-indigo-50 text-indigo-600 shadow-sm'
+                    ? 'bg-orange-50 text-orange-600 shadow-sm'
                     : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                 }`}
               >
@@ -170,13 +170,13 @@ export default function Navbar() {
               <div className="flex items-center space-x-3">
                 <Link
                   href="/auth/signin"
-                  className="px-4 py-2 text-indigo-600 hover:text-indigo-700 font-medium text-sm transition-colors duration-200"
+                  className="px-4 py-2 text-orange-600 hover:text-orange-700 font-medium text-sm transition-colors duration-200"
                 >
                   {t.signin}
                 </Link>
                 <Link
                   href="/auth/register"
-                  className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm rounded-md transition-all duration-200 shadow-sm"
+                  className="px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white font-medium text-sm rounded-md transition-all duration-200 shadow-sm"
                 >
                   {t.register}
                 </Link>
@@ -188,7 +188,7 @@ export default function Navbar() {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 transition-colors duration-200"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-orange-500 transition-colors duration-200"
             >
               <svg
                 className={`${isMenuOpen ? 'hidden' : 'block'} h-6 w-6`}
@@ -222,7 +222,7 @@ export default function Navbar() {
               onClick={() => setIsMenuOpen(false)}
               className={`flex items-center space-x-3 px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
                 isActive(link.href)
-                  ? 'bg-indigo-50 text-indigo-600'
+                  ? 'bg-orange-50 text-orange-600'
                   : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
@@ -292,7 +292,7 @@ export default function Navbar() {
               <Link
                 href="/auth/register"
                 onClick={() => setIsMenuOpen(false)}
-                className="block px-3 py-3 rounded-md text-base font-medium bg-indigo-600 text-white hover:bg-indigo-700 transition-colors duration-200"
+                className="block px-3 py-3 rounded-md text-base font-medium bg-orange-600 text-white hover:bg-orange-700 transition-colors duration-200"
               >
                 {t.register}
               </Link>
