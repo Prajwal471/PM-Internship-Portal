@@ -108,9 +108,10 @@ export default function Navbar() {
             </div>
             <div>
               <h1 className="text-xl font-bold bg-gradient-to-r from-orange-600 to-blue-700 bg-clip-text text-transparent">
-                PM Internship
+                PM Internship Portal
               </h1>
-              <p className="text-xs text-gray-500 -mt-1">Portal</p>
+              
+              <p className="text-[10px] text-gray-500">Ministry of Corporate Affairs</p>
             </div>
           </Link>
 
