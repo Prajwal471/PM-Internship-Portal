@@ -101,10 +101,31 @@ export default function Navbar() {
           <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-gradient-to-r from-orange-600 to-blue-700 rounded-full flex items-center justify-center shadow-lg">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2-2v2m8 0V6a2 2 0 012 2v6a2 2 0 01-2 2H8a2 2 0 01-2-2V8a2 2 0 012-2V6" />
-              </svg>
+            <div className="flex items-center">
+              {/* Minimalistic 'government-style' emblem: Ashoka Chakra-like icon + tricolor stripe */}
+              <div className="w-10 h-10 rounded-full bg-white border-2 border-blue-700 flex items-center justify-center shadow-md">
+                <svg viewBox="0 0 24 24" className="w-6 h-6 text-blue-700" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                  {/* spokes (12 for simplicity) */}
+                  <line x1="12" y1="3" x2="12" y2="6" stroke="currentColor" strokeWidth="1" />
+                  <line x1="12" y1="18" x2="12" y2="21" stroke="currentColor" strokeWidth="1" />
+                  <line x1="3" y1="12" x2="6" y2="12" stroke="currentColor" strokeWidth="1" />
+                  <line x1="18" y1="12" x2="21" y2="12" stroke="currentColor" strokeWidth="1" />
+                  <line x1="5.636" y1="5.636" x2="7.757" y2="7.757" stroke="currentColor" strokeWidth="1" />
+                  <line x1="16.243" y1="16.243" x2="18.364" y2="18.364" stroke="currentColor" strokeWidth="1" />
+                  <line x1="5.636" y1="18.364" x2="7.757" y2="16.243" stroke="currentColor" strokeWidth="1" />
+                  <line x1="16.243" y1="7.757" x2="18.364" y2="5.636" stroke="currentColor" strokeWidth="1" />
+                  <line x1="8.5" y1="3.8" x2="9.6" y2="6.5" stroke="currentColor" strokeWidth="1" />
+                  <line x1="15.5" y1="20.2" x2="14.4" y2="17.5" stroke="currentColor" strokeWidth="1" />
+                  <line x1="3.8" y1="8.5" x2="6.5" y2="9.6" stroke="currentColor" strokeWidth="1" />
+                  <line x1="20.2" y1="15.5" x2="17.5" y2="14.4" stroke="currentColor" strokeWidth="1" />
+                </svg>
+              </div>
+              <div className="ml-1 h-6 w-2 rounded-sm overflow-hidden shadow-inner" aria-hidden="true">
+                <div className="h-2 bg-orange-600" />
+                <div className="h-2 bg-white" />
+                <div className="h-2 bg-green-600" />
+              </div>
             </div>
             <div>
               <h1 className="text-xl font-bold bg-gradient-to-r from-orange-600 to-blue-700 bg-clip-text text-transparent">
