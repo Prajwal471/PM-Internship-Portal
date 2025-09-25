@@ -24,7 +24,7 @@ const translations = {
     careGuidance: 'Career Guidance',
     connect: 'Connect With Us',
     followUs: 'Follow us for updates',
-    copyright: '© 2024 PM Internship Portal. All rights reserved.',
+    copyright: '© 2025 PM Internship Portal. All rights reserved.',
     madeWith: 'Made with ❤️ for Indian Youth',
     governmentScheme: 'Government of India Initiative'
   },
