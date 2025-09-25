@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "PM Internship Recommendation Portal",
-  description: "AI-based internship recommendation system for PM Internship Scheme.",
+  description: "AI-based internship recommendation system for PM Internship Scheme.\nMinistry of Corporate Affairs",
 };
 
 export default function RootLayout({
@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <Providers>
           <Navbar />
-          <main className="flex-grow pt-16">{children}</main>
+          <main className="flex-grow">{children}</main>
           <Footer />
           <Chatbot />
         </Providers>
