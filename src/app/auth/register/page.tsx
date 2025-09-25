@@ -151,7 +151,7 @@ function RegisterPage() {
 
   if (success) {
     return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-100 flex items-center justify-center p-4" suppressHydrationWarning>
+    <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center p-4" suppressHydrationWarning>
         <div className="bg-white rounded-lg shadow-xl p-8 w-full max-w-md text-center">
           <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -166,12 +166,12 @@ function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4" suppressHydrationWarning>
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 py-8 px-4" suppressHydrationWarning>
       <div className="bg-white rounded-lg shadow-xl p-8 w-full max-w-2xl mx-auto">
         <div className="flex justify-end mb-4">
           <button
             onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
-            className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+            className="text-sm text-orange-600 hover:text-orange-800 font-medium"
           >
             {language === 'en' ? 'हिंदी' : 'English'}
           </button>
@@ -192,7 +192,7 @@ function RegisterPage() {
                 value={formData.name}
                 onChange={(e) => updateFormData('name', e.target.value)}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               />
             </div>
 
@@ -206,7 +206,7 @@ function RegisterPage() {
                 max="35"
                 value={formData.age}
                 onChange={(e) => updateFormData('age', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               />
             </div>
 
@@ -219,7 +219,7 @@ function RegisterPage() {
                 value={formData.email}
                 onChange={(e) => updateFormData('email', e.target.value)}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               />
             </div>
 
@@ -233,7 +233,7 @@ function RegisterPage() {
                 onChange={(e) => updateFormData('password', e.target.value)}
                 required
                 minLength={6}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               />
             </div>
 
@@ -245,7 +245,7 @@ function RegisterPage() {
                 value={formData.education.level}
                 onChange={(e) => updateFormData('education.level', e.target.value)}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-lg text-gray-900 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               >
                 <option value="">Select education level</option>
                 {educationLevels.map(level => (
@@ -264,7 +264,7 @@ function RegisterPage() {
                 type="text"
                 value={formData.education.field}
                 onChange={(e) => updateFormData('education.field', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               />
             </div>
 
@@ -276,7 +276,7 @@ function RegisterPage() {
                 value={formData.location.state}
                 onChange={(e) => updateFormData('location.state', e.target.value)}
                 required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-lg text-gray-900 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               >
                 <option value="">Select state</option>
                 {indianStates.map(state => (
@@ -293,7 +293,7 @@ function RegisterPage() {
                 type="text"
                 value={formData.location.district}
                 onChange={(e) => updateFormData('location.district', e.target.value)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
+                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
               />
             </div>
           </div>
@@ -307,7 +307,7 @@ function RegisterPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-indigo-600 text-white py-3 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed font-medium text-lg"
+            className="w-full bg-orange-600 text-white py-3 px-4 rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed font-medium text-lg"
           >
             {loading ? '...' : t.register}
           </button>
@@ -316,7 +316,7 @@ function RegisterPage() {
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
             {t.haveAccount}{' '}
-            <Link href="/auth/signin" className="text-indigo-600 hover:text-indigo-800 font-medium">
+            <Link href="/auth/signin" className="text-orange-600 hover:text-orange-800 font-medium">
               {t.signin}
             </Link>
           </p>

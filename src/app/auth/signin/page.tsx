@@ -62,19 +62,19 @@ function SignInPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4" suppressHydrationWarning>
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-blue-50 flex items-center justify-center p-4" suppressHydrationWarning>
       <div className="bg-white rounded-lg shadow-xl p-8 w-full max-w-md">
         <div className="flex justify-end mb-4">
           <button
             onClick={() => setLanguage(language === 'en' ? 'hi' : 'en')}
-            className="text-sm text-blue-600 hover:text-blue-800 font-medium"
+            className="text-sm text-orange-600 hover:text-orange-800 font-medium"
           >
             {language === 'en' ? 'हिंदी' : 'English'}
           </button>
         </div>
         
         <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4">
+          <div className="w-16 h-16 bg-orange-600 rounded-full flex items-center justify-center mx-auto mb-4">
             <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
@@ -93,7 +93,7 @@ function SignInPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
             />
           </div>
 
@@ -107,7 +107,7 @@ function SignInPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent text-lg text-gray-900 placeholder:text-gray-500 [-webkit-text-fill-color:theme(colors.gray.900)] [color-scheme:light]"
             />
           </div>
 
@@ -120,7 +120,7 @@ function SignInPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-indigo-600 text-white py-3 px-4 rounded-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed font-medium text-lg"
+            className="w-full bg-orange-600 text-white py-3 px-4 rounded-md hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed font-medium text-lg"
           >
             {loading ? '...' : t.signin}
           </button>
@@ -129,7 +129,7 @@ function SignInPage() {
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
             {t.noAccount}{' '}
-            <Link href="/auth/register" className="text-indigo-600 hover:text-indigo-800 font-medium">
+            <Link href="/auth/register" className="text-orange-600 hover:text-orange-800 font-medium">
               {t.register}
             </Link>
           </p>
