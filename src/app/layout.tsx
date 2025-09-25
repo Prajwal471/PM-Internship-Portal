@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "PM Internship Recommendation Portal",
-  description: "AI-based internship recommendation system for PM Internship Scheme.\nMinistry of Corporate Affairs",
+  description: "AI-based internship recommendation system for PM Internship Scheme.",
 };
 
 export default function RootLayout({
