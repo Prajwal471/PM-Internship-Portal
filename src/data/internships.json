@@ -348,5 +348,155 @@
     ],
     "type": "Hybrid",
     "posted": "2024-01-19"
+  },
+  {
+    "id": "15",
+    "title": "Human Resources Intern",
+    "company": "PeopleFirst HR Solutions",
+    "location": {
+      "state": "Telangana",
+      "district": "Hyderabad",
+      "city": "Hyderabad"
+    },
+    "duration": "3 months",
+    "stipend": 12000,
+    "description": "Assist in recruitment, onboarding, and employee engagement activities.   Learn HR best practices and compliance.",
+    "requirements": {
+      "skills": ["Communication", "Recruitment", "MS Office", "Teamwork"],
+      "education": ["bachelors", "diploma", "12th"],
+      "sectors": ["Human Resources", "Administration"]
+    },
+    "benefits": [
+      "HR process training",
+      "Networking with HR professionals",
+      "Certificate of internship"
+    ],
+    "type": "Office-based",
+    "posted": "2024-01-20"
+  },
+  {
+    "id": "16",
+    "title": "Environmental Research Intern",
+    "company": "Green Earth Foundation",
+    "location": {
+      "state": "Kerala",
+      "district": "Kochi",
+      "city": "Kochi"
+    },
+    "duration": "4 months",
+    "stipend": 15000,
+    "description": "Participate in field studies, data collection, and analysis for   environmental conservation projects.",
+    "requirements": {
+      "skills": ["Research", "Data Analysis", "Field Work", "Report Writing"],
+      "education": ["bachelors", "masters"],
+      "sectors": ["Environment", "Research & Development"]
+    },
+    "benefits": [
+      "Field research experience",
+      "Mentorship from environmental scientists",
+      "Opportunity for publication"
+    ],
+    "type": "Hybrid",
+    "posted": "2024-01-21"
+  },
+  {
+    "id": "17",
+    "title": "Mobile App Development Intern",
+    "company": "AppMakers Pvt Ltd",
+    "location": {
+      "state": "Punjab",
+      "district": "Amritsar",
+      "city": "Amritsar"
+    },
+    "duration": "5 months",
+    "stipend": 20000,
+    "description": "Develop and test mobile applications for Android and iOS platforms. Work   with cross-functional teams.",
+    "requirements": {
+      "skills": ["Android", "iOS", "Programming", "UI/UX"],
+      "education": ["bachelors", "diploma", "pursuing-bachelors"],
+      "sectors": ["Technology", "Mobile Development"]
+    },
+    "benefits": [
+      "App development portfolio",
+      "Mentorship from senior developers",
+      "Job placement assistance"
+    ],
+    "type": "Remote",
+    "posted": "2024-01-22"
+  },
+  {
+    "id": "18",
+    "title": "Social Impact Intern",
+    "company": "Youth Empower Foundation",
+    "location": {
+      "state": "Madhya Pradesh",
+      "district": "Indore",
+      "city": "Indore"
+    },
+    "duration": "3 months",
+    "stipend": 9000,
+    "description": "Support community outreach programs, assist in organizing workshops, and   help measure project impact for youth empowerment initiatives.",
+    "requirements": {
+      "skills": ["Communication", "Event Management", "Social Work", "Teamwork"],
+      "education": ["12th", "bachelors", "diploma"],
+      "sectors": ["Social Impact", "Education"]
+    },
+    "benefits": [
+      "Community engagement experience",
+      "Certificate of internship",
+      "Mentorship from social sector leaders"
+    ],
+    "type": "Office-based",
+    "posted": "2024-01-23"
+  },
+  {
+    "id": "19",
+    "title": "Business Analyst Intern",
+    "company": "Market Insights Pvt Ltd",
+    "location": {
+      "state": "Delhi",
+      "district": "New Delhi",
+      "city": "New Delhi"
+    },
+    "duration": "4 months",
+    "stipend": 17000,
+    "description": "Analyze market trends, prepare business reports, and support client   presentations for consulting projects.",
+    "requirements": {
+      "skills": ["Business Analysis", "Excel", "Presentation", "Research"],
+      "education": ["bachelors", "masters"],
+      "sectors": ["Consulting", "Business"]
+    },
+    "benefits": [
+      "Business analytics training",
+      "Client interaction experience",
+      "Job placement support"
+    ],
+    "type": "Hybrid",
+    "posted": "2024-01-24"
+  },
+  {
+    "id": "20",
+    "title": "Video Editing Intern",
+    "company": "Creative Media Works",
+    "location": {
+      "state": "Goa",
+      "district": "Panaji",
+      "city": "Panaji"
+    },
+    "duration": "2 months",
+    "stipend": 10000,
+    "description": "Edit and produce video content for social media and marketing campaigns.   Learn professional editing tools and storytelling techniques.",
+    "requirements": {
+      "skills": ["Video Editing", "Creativity", "Storytelling", "Social Media"],
+      "education": ["12th", "bachelors", "diploma"],
+      "sectors": ["Media & Entertainment", "Marketing"]
+    },
+    "benefits": [
+      "Portfolio development",
+      "Training on editing software",
+      "Networking with media professionals"
+    ],
+    "type": "Remote",
+    "posted": "2024-01-25"
   }
 ]
